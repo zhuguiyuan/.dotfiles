@@ -50,20 +50,9 @@
   (setq company-selection-wrap-around t)
   (setq company-transformers '(company-sort-by-occurrence)))
 
-(use-package lsp-mode
+(use-package eglot
   :ensure t
-  :init
-  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
-  (setq lsp-keymap-prefix "C-c l")
-  :commands (lsp lsp-deferred))
-
-(use-package lsp-pyright
-  :ensure t
-  :config
-  :hook
-  (python-mode . (lambda ()
-		  (require 'lsp-pyright)
-		  (lsp-deferred))))
+  :hook (python-mode . eglot-ensure))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
