@@ -50,7 +50,7 @@
 
 (use-package eglot
   :ensure t
-  :hook (python-mode . eglot-ensure))
+  :hook (c-mode . eglot-ensure))
 
 (use-package python
   :config
