@@ -64,8 +64,15 @@
   :init
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
   (setq lsp-keymap-prefix "C-c l")
-  :hook ((python-mode . lsp-deferred))
   :commands (lsp lsp-deferred))
+
+(use-package lsp-pyright
+  :ensure t
+  :config
+  :hook
+  (python-mode . (lambda ()
+		  (require 'lsp-pyright)
+		  (lsp-deferred))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
