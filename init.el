@@ -8,12 +8,10 @@
 
 ;; 自动下载并启用 use-package 插件
 (require 'package)
-(add-to-list 'package-archives
-	     '("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/"))
-(add-to-list 'package-archives
-	     '("nongnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/"))
-(add-to-list 'package-archives
-	     '("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/"))
+(setq package-archives
+      '(("gnu"    . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+	("nongnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
+	("melpa"  . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 (package-initialize)
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
