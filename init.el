@@ -8,24 +8,16 @@
 
 ;; 自动下载并启用 use-package 插件
 (require 'package)
-; list the packages you want
-(setq package-list '(use-package))
-; list the repositories containing them
 (add-to-list 'package-archives
 	     '("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/"))
 (add-to-list 'package-archives
 	     '("nongnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/"))
 (add-to-list 'package-archives
 	     '("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/"))
-; activate all the packages (in particular autoloads)
 (package-initialize)
-; fetch the list of packages available 
-(unless package-archive-contents
-  (package-refresh-contents))
-; install the missing packages
-(dolist (package package-list)
-  (unless (package-installed-p package)
-    (package-install package)))
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
 ;; 基础配置
 (electric-pair-mode t)                          ; 自动补全括号
