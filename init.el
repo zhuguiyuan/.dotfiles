@@ -52,6 +52,11 @@
   :ensure t
   :hook (python-mode . eglot-ensure))
 
+(use-package python
+  :config
+  ;; Remove guess indent python message
+  (setq python-indent-guess-indent-offset-verbose nil))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
