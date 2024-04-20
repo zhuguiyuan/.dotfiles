@@ -26,7 +26,6 @@
 
 ;; 快捷键配置
 (global-set-key (kbd "C-j") nil) ; 将 C-j 作为一个前缀键
-(global-set-key (kbd "C-j C-k") 'kill-whole-line) ; 删除光标所在的行
 
 ;; 一些常用插件
 (use-package evil
