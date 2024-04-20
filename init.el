@@ -59,13 +59,13 @@
   (setq company-selection-wrap-around t)
   (setq company-transformers '(company-sort-by-occurrence)))
 
-(use-package c++-mode
-  :functions
-  c-toggle-hungry-state
-  :hook
-  (c-mode . lsp-deferred)
-  (c++-mode . lsp-deferred)
-  (c++-mode . c-toggle-hungry-state))
+(use-package lsp-mode
+  :ensure t
+  :init
+  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+  (setq lsp-keymap-prefix "C-c l")
+  :hook ((python-mode . lsp-deferred))
+  :commands (lsp lsp-deferred))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
