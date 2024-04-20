@@ -39,7 +39,9 @@
 ;; 一些常用插件
 (use-package evil
   :ensure t
-  :init (evil-mode))
+  :init
+  (setq evil-disable-insert-state-bindings t)
+  (evil-mode))
 
 (use-package avy
   :ensure t
