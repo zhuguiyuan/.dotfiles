@@ -48,10 +48,6 @@
   (setq company-selection-wrap-around t)
   (setq company-transformers '(company-sort-by-occurrence)))
 
-(use-package eglot
-  :ensure t
-  :hook (c-mode . eglot-ensure))
-
 (use-package python
   :config
   ;; Remove guess indent python message
