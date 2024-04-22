@@ -47,7 +47,14 @@
   (setq company-idle-delay 0.0)
   (setq company-show-numbers t)
   (setq company-selection-wrap-around t)
-  (setq company-transformers '(company-sort-by-occurrence)))
+  (setq company-transformers '(delete-consecutive-dups
+			       company-sort-by-occurrence))
+  (setq company-backends '((company-capf
+			    company-dabbrev-code
+			    company-keywords
+			    company-semantic
+			    company-files
+			    company-etags))))
 
 (use-package python
   :config
