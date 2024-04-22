@@ -30,6 +30,7 @@
   :ensure t
   :init
   (setq evil-disable-insert-state-bindings t)
+  :config
   (evil-mode))
 
 (use-package avy
@@ -39,8 +40,8 @@
 
 (use-package company
   :ensure t
-  :init (global-company-mode)
   :config
+  (global-company-mode)
   (setq company-minimum-prefix-length 1)
   (setq company-tooltip-align-annotations t)
   (setq company-idle-delay 0.0)
