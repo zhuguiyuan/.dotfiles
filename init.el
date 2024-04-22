@@ -3,9 +3,6 @@
   (when (version< emacs-version minver)
     (error "Your Emacs is too old -- requires v%s or higher" minver)))
 
-;; 设定源码目录
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-
 ;; 自动下载并启用 use-package 插件
 (require 'package)
 (setq package-archives
@@ -30,8 +27,7 @@
   :ensure t
   :init
   (setq evil-disable-insert-state-bindings t)
-  :config
-  (evil-mode))
+  :hook (after-init . evil-mode))
 
 (use-package avy
   :ensure t
@@ -40,9 +36,8 @@
 
 (use-package company
   :ensure t
+  :hook (after-init . global-company-mode)
   :config
-  (global-company-mode)
-  (setq company-minimum-prefix-length 1)
   (setq company-tooltip-align-annotations t)
   (setq company-idle-delay 0.0)
   (setq company-show-numbers t)
