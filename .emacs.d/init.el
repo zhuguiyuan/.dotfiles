@@ -18,6 +18,7 @@
 (electric-pair-mode t)                          ; 自动补全括号
 (global-display-line-numbers-mode)              ; 全局显示行号
 (setq-default auto-fill-function 'do-auto-fill) ; 全局自动换行
+(setq make-backup-files nil)                    ; 关闭自动备份
 
 ;; 快捷键配置
 (global-set-key (kbd "C-j") nil) ; 将 C-j 作为一个前缀键
