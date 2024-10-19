@@ -7,13 +7,13 @@ set -e
 GIT_REPO=$(dirname $(readlink -f "$0"))
 
 # Emacs
-EMACS_CONFIG_SRC=$GIT_REPO/.emacs.d/init.el
+EMACS_CONFIG_SRC=$GIT_REPO/emacs.d/init.el
 EMACS_CONFIG_DST=$HOME/.emacs.d/init.el
 mkdir -p $(dirname $EMACS_CONFIG_DST)
 ln -s $EMACS_CONFIG_SRC $EMACS_CONFIG_DST
 
 # Vim
-VIM_CONFIG_SRC=$GIT_REPO/.vimrc
+VIM_CONFIG_SRC=$GIT_REPO/vimrc
 VIM_CONFIG_DST=$HOME/.vimrc
 ln -s $VIM_CONFIG_SRC $VIM_CONFIG_DST
 
