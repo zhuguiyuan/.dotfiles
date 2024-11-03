@@ -1,19 +1,19 @@
 #!/bin/env bash
 
-# Exit immediately if a command exits with a non-zero status
-set -e
+set -ue
 
-# Locate the repository folder
-GIT_REPO=$(dirname $(readlink -f "$0"))
+GIT_REPO=$(dirname "$(readlink -f "$0")")
+BACKUP_FOLDER=$GIT_REPO/backups
+FILE_LIST="vimrc emacs.d"
 
-# Emacs
-EMACS_CONFIG_SRC=$GIT_REPO/emacs.d/init.el
-EMACS_CONFIG_DST=$HOME/.emacs.d/init.el
-mkdir -p $(dirname $EMACS_CONFIG_DST)
-ln -s $EMACS_CONFIG_SRC $EMACS_CONFIG_DST
-
-# Vim
-VIM_CONFIG_SRC=$GIT_REPO/vimrc
-VIM_CONFIG_DST=$HOME/.vimrc
-ln -s $VIM_CONFIG_SRC $VIM_CONFIG_DST
-
+mkdir -p "$BACKUP_FOLDER"
+for FILE in $FILE_LIST
+do
+  if [ -e "$HOME/.$FILE" ]
+  then
+    echo "Moving $FILE to $BACKUP_FOLDER"
+    mv "$HOME/.$FILE" "$BACKUP_FOLDER"
+  fi
+  echo "Link $FILE to home directory"
+  ln -s "$GIT_REPO/$FILE" "$HOME/.$FILE"
+done
