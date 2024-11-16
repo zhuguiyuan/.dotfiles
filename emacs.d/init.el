@@ -21,9 +21,21 @@
   (setq make-backup-files nil)
   (global-set-key (kbd "C-j") nil))
 
+(use-package elisp-mode
+  :config
+  (modify-syntax-entry ?- "w" emacs-lisp-mode-syntax-table)
+  (modify-syntax-entry ?_ "w" emacs-lisp-mode-syntax-table))
+
+(use-package cc-mode
+  :config
+  (modify-syntax-entry ?_ "w" c-mode-syntax-table))
+
+(use-package python
+  :config
+  (setq python-indent-guess-indent-offset-verbose nil))
+
 ;; 一些常用插件
 (use-package evil
-  ;:load-path "/home/zhugy/.emacs.d/evil"
   :ensure t
   :init
   (setq evil-disable-insert-state-bindings t)
