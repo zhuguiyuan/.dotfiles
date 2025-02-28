@@ -34,6 +34,19 @@
   :config
   (setq python-indent-guess-indent-offset-verbose nil))
 
+(use-package verilog-ts-mode
+  :ensure t
+  :mode ("\\.[ds]?va?h?\\'" . verilog-ts-mode)
+  :bind (:map verilog-mode-map ("\r" . nil))
+  :bind (:map verilog-mode-map (":" . nil))
+  :bind (:map verilog-mode-map ("`" . nil))
+  :bind (:map verilog-mode-map (";" . nil))
+  :bind (:map verilog-mode-map ("C-;" . nil))
+  :hook (verilog-ts-mode . (lambda () (setq indent-tabs-mode nil)))
+  :init
+  (unless (treesit-language-available-p 'verilog)
+    (verilog-ts-install-grammar)))
+
 ;; 一些常用插件
 (use-package evil
   :ensure t
