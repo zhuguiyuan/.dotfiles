@@ -45,7 +45,10 @@
   :hook (verilog-ts-mode . (lambda () (setq indent-tabs-mode nil)))
   :init
   (unless (treesit-language-available-p 'verilog)
-    (verilog-ts-install-grammar)))
+    (let ((url "https://github.com/zhuguiyuan/tree-sitter-systemverilog")
+	  (revision "debian12"))
+      (add-to-list 'treesit-language-source-alist `(verilog ,url ,revision))
+      (treesit-install-language-grammar 'verilog))))
 
 ;; 一些常用插件
 (use-package evil
@@ -93,7 +96,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(company which-key avy ivy evil)))
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
