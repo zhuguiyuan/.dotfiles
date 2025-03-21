@@ -64,11 +64,6 @@
   (setq ivy-use-virtual-buffers t)
   (setq enable-recursive-minibuffers t))
 
-(use-package avy
-  :ensure t
-  :bind
-  (("M-j" . avy-goto-char-timer)))
-
 (use-package which-key
   :ensure t
   :hook (after-init . which-key-mode))
