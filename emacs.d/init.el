@@ -19,22 +19,6 @@
   (global-display-line-numbers-mode)
   (setq make-backup-files nil))
 
-(use-package verilog-ts-mode
-  :ensure t
-  :mode ("\\.[ds]?va?h?\\'" . verilog-ts-mode)
-  :bind (:map verilog-mode-map ("\r" . nil))
-  :bind (:map verilog-mode-map (":" . nil))
-  :bind (:map verilog-mode-map ("`" . nil))
-  :bind (:map verilog-mode-map (";" . nil))
-  :bind (:map verilog-mode-map ("C-;" . nil))
-  :hook (verilog-ts-mode . (lambda () (setq indent-tabs-mode nil)))
-  :init
-  (unless (treesit-language-available-p 'verilog)
-    (let ((url "https://github.com/zhuguiyuan/tree-sitter-systemverilog")
-	  (revision "debian12"))
-      (add-to-list 'treesit-language-source-alist `(verilog ,url ,revision))
-      (treesit-install-language-grammar 'verilog))))
-
 ;; 一些常用插件
 (use-package evil
   :ensure t
