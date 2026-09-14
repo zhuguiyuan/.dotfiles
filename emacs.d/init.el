@@ -13,47 +13,10 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-;; 基础配置
 (use-package emacs
   :config
   (global-display-line-numbers-mode)
   (setq make-backup-files nil))
-
-;; 一些常用插件
-(use-package evil
-  :ensure t
-  :init
-  (setq evil-disable-insert-state-bindings t)
-  :hook (after-init . evil-mode))
-
-(use-package ivy
-  :ensure t
-  :hook (after-init . ivy-mode)
-  :config
-  (setq ivy-use-virtual-buffers t)
-  (setq enable-recursive-minibuffers t))
-
-(use-package which-key
-  :ensure t
-  :hook (after-init . which-key-mode))
-
-(use-package company
-  :ensure t
-  :hook (after-init . global-company-mode)
-  :config
-  (setq company-minimum-prefix-length 1)
-  (setq company-tooltip-align-annotations t)
-  (setq company-idle-delay 0.0)
-  (setq company-show-numbers t)
-  (setq company-selection-wrap-around t)
-  (setq company-transformers '(delete-consecutive-dups
-			       company-sort-by-occurrence))
-  (setq company-backends '((company-capf
-			    company-dabbrev-code
-			    company-keywords
-			    company-semantic
-			    company-files
-			    company-etags))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
